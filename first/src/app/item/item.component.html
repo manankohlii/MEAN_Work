@@ -1,0 +1,6 @@
+<div [ngStyle]="{'border-color': isSelected ? buttonColor : 'transparent'}" class="item-container">
+    <h2>{{ title }}</h2>
+    <p>{{ description }}</p>
+    <button (click)="onClick()" [ngStyle]="{'background-color': buttonColor}">Select</button>
+  </div>
+  

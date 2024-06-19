@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+app-item {
+  flex: 1 1 calc(25% - 20px); /* Adjusts width based on the available space */
+  margin: 10px;
+  min-width: 200px; /* Ensure a minimum width for each item */
+}
