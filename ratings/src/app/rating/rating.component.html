@@ -1,0 +1,9 @@
+<div class="rating_item">
+    <h3>{{ name }}</h3>
+    <p>{{ content }}</p>
+    <div>
+      <span *ngFor="let star of filledStars">★</span>
+      <span *ngFor="let star of emptyStars">☆</span>
+    </div>
+  </div>
+  
