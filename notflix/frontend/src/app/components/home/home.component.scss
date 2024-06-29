@@ -1,0 +1,129 @@
+$primary-color: #e50914;
+$secondary-color: #fff;
+$background-color: #000;
+$input-background-color: #333;
+$button-background-color: #e50914;
+$button-hover-color: #f40612;
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $background-color;
+  color: $secondary-color;
+}
+
+.header {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      height: 32px;
+    }
+
+    .sign-in-btn {
+      background: none;
+      border: 1px solid $secondary-color;
+      color: $secondary-color;
+      padding: 5px 20px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $background-color;
+      }
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+
+  .hero-section {
+    max-width: 600px;
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .email-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        flex: 1;
+        padding: 10px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 2px 0 0 2px;
+        background-color: $input-background-color;
+        color: $secondary-color;
+      }
+
+      .get-started-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0 2px 2px 0;
+        background-color: $button-background-color;
+        color: $secondary-color;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $button-hover-color;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+
+  .footer-content {
+    text-align: center;
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      a {
+        margin: 0 10px;
+        color: $secondary-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
