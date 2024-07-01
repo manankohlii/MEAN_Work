@@ -6,10 +6,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'] 
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
+  readonly password = new FormControl('', [Validators.required]);
 
   errorMessage = signal('');
 
@@ -30,7 +31,8 @@ export class LoginComponent {
   }
 
   hide: boolean = true;
-  clickEvent(event: MouseEvent) {
+
+  togglePasswordVisibility() {
     this.hide = !this.hide;
   }
 }
