@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
+//import { MovieListComponent } from './components/movie-list/movie-list.component';
 
 import { LoginComponent } from './components/login/login.component';
 //import { RegisterComponent } from './components/register/register.component';
@@ -22,7 +22,7 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent,
     //RegisterComponent,
     MovieItemComponent,
-    MovieListComponent
+    //MovieListComponent
   ],
   imports: [
     BrowserModule,
