@@ -12,6 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieItemComponent } from './pages/movie-item/movie-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { TrailerDialogComponent } from './pages/movie-detail/trailer-dialog/trailer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     MovieListComponent,
     RegisterComponent,
     HomeComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    MovieDetailComponent,
+    TrailerDialogComponent
   ],
   imports: [
     BrowserModule,

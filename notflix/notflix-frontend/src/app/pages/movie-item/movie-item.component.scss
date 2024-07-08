@@ -1,5 +1,6 @@
 .movie-item {
     width: 200px; /* Standard width for the movie item */
+    height: 300px; /* Fixed height for the movie item */
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
@@ -8,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    box-sizing: border-box;
   }
   
   .movie-item img {
@@ -15,17 +17,25 @@
     height: 150px; /* Fixed height for the image */
     object-fit: cover; /* Ensure the image covers the area */
     border-radius: 5px;
+    margin-bottom: 10px;
   }
   
   .movie-item h3 {
-    margin: 10px 0;
+    margin: 5px 0;
     font-size: 16px;
+    flex-shrink: 0; /* Prevent shrinking */
   }
   
   .movie-item p {
-    padding: 0 10px;
     font-size: 14px;
     color: #555;
-    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show up to 3 lines */
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    max-height: 3.6em; /* 3 lines at 1.2em line height */
+    margin-top: auto; /* Push to bottom */
   }
   
