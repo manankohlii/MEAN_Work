@@ -7,43 +7,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
+  submitted = false;
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
-    this.loginForm = this.fb.group({
+  constructor(private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', Validators.required]
     });
   }
 
-  getEmailErrorMessage() {
-    const emailControl = this.loginForm.get('email');
-    if (!emailControl) {
-      return '';
-    }
-    if (emailControl.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return emailControl.hasError('email') ? 'Not a valid email' : '';
-  }
+  ngOnInit(): void {}
 
-  getPasswordErrorMessage() {
-    const passwordControl = this.loginForm.get('password');
-    if (!passwordControl) {
-      return '';
-    }
-    if (passwordControl.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return passwordControl.hasError('minlength') ? 'Password must be at least 6 characters long' : '';
+  get formControls() {
+    return this.loginForm.controls;
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      // Handle login logic here
-      console.log('Login form data:', this.loginForm.value);
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
     }
+
+    // Handle successful login
+    console.log('Form Submitted', this.loginForm.value);
   }
 }

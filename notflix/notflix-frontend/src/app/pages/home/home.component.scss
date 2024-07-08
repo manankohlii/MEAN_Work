@@ -1,15 +1,38 @@
-.home {
-    &__banner {
-      height: 70vh;
-      background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/335ddde7-3955-499c-b4cc-ca2eb7e1ae71/98533523-112a-488c-a711-d0517920cdb5/US-en-20240624-POP_SIGNUP_TWO_WEEKS-perspective_WEB_31571788-f022-43e9-904f-9ad7e6d57bde_small.jpg/banner.jpg');
-      background-size: cover;
-      background-position: center;
-    }
+.home-banner {
+    background: url('https://assets.nflxext.com/ffe/siteui/vlv3/335ddde7-3955-499c-b4cc-ca2eb7e1ae71/98533523-112a-488c-a711-d0517920cdb5/US-en-20240624-POP_SIGNUP_TWO_WEEKS-perspective_WEB_31571788-f022-43e9-904f-9ad7e6d57bde_small.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
   
-    &__content {
-      padding: 2rem;
-      background-color: #141414;
-      color: white;
-    }
+  .banner-content {
+    max-width: 600px;
+  }
+  
+  .banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .banner-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-primary {
+    background-color: #e50914;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #f40612;
   }
   

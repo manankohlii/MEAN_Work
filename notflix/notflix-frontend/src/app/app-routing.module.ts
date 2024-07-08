@@ -1,11 +1,17 @@
-// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
-  // Add other routes as needed
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'movies', component: MovieListComponent },
+
 ];
 
 @NgModule({

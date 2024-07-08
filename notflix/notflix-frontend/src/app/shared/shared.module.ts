@@ -1,15 +1,16 @@
-// src/app/shared/shared.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { MatButtonModule } from '@angular/material/button'; // Import necessary Material modules
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [NavbarComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule // Import necessary Material modules
+  declarations: [
+    NavbarComponent
   ],
-  exports: [NavbarComponent]
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    NavbarComponent
+  ]
 })
-export class SharedModule {}
+export class SharedModule { }

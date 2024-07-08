@@ -1,0 +1,14 @@
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adjust spacing between movie items */
+    max-width: 900px; /* Adjust the width of the container as needed */
+  }
+  
