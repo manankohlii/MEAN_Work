@@ -14,6 +14,9 @@ import { MovieItemComponent } from './pages/movie-item/movie-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { TrailerDialogComponent } from './pages/movie-detail/trailer-dialog/trailer-dialog.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { TrailerDialogComponent } from './pages/movie-detail/trailer-dialog/trai
     BrowserAnimationsModule,
     SharedModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    YouTubePlayerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

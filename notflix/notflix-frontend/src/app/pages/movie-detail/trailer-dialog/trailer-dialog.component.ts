@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-trailer-dialog',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./trailer-dialog.component.scss']
 })
 export class TrailerDialogComponent {
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { trailerKey: string }) {}
 }

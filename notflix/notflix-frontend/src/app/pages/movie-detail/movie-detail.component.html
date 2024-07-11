@@ -1,1 +1,30 @@
-<p>movie-detail works!</p>
+<div class="movie-detail">
+  <div class="background">
+    <div class="movie-info">
+      <h1>Inside Out 2</h1>
+      <img src="https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" alt="Inside Out 2">
+      <p><strong>Original Language:</strong> en</p>
+      <p><strong>Original Title:</strong> Inside Out 2</p>
+      <p><strong>Overview:</strong> Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear, and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.</p>
+      <p><strong>Popularity:</strong> 7582.401</p>
+      <p><strong>Release Date:</strong> 2024-06-11</p>
+      <p><strong>Vote Average:</strong> 7.716</p>
+      <p><strong>Vote Count:</strong> 1497</p>
+      <button (click)="openTrailer()">Play Trailer</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="movie">
+  <h1>{{ movie.original_title }}</h1>
+  <p>Original Language: {{ movie.original_language }}</p>
+  <p>Overview: {{ movie.overview }}</p>
+  <p>Popularity: {{ movie.popularity }}</p>
+  <p>Release Date: {{ movie.release_date }}</p>
+  <p>Vote Average: {{ movie.vote_average }}</p>
+  <p>Vote Count: {{ movie.vote_count }}</p>
+
+  <button *ngIf="trailerKey" (click)="openTrailer()">Play Trailer</button>
+  <youtube-player *ngIf="trailerKey" [videoId]="trailerKey"></youtube-player>
+
+</div> -->

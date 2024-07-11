@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'movies', component: MovieListComponent },
-  { path: 'movie-detail/:id', component: MovieDetailComponent }
+  { path: 'movie/:id', component: MovieDetailComponent },
+  { path: 'register', component: RegisterComponent }
 
 ];
 

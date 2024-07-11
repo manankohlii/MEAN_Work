@@ -1,1 +1,37 @@
-<p>register works!</p>
+<!-- src/app/pages/register/register.component.html -->
+<div class="registration-container">
+    <!-- Step 1 -->
+    <form [formGroup]="step1Form" *ngIf="currentStep === 1">
+      <h1>Step 1: Create your account</h1>
+      <input formControlName="email" placeholder="Email address" />
+      <div *ngIf="step1Form.controls['email'].errors?.['required'] && step1Form.controls['email'].touched">Email is required</div>
+      <div *ngIf="step1Form.controls['email'].errors?.['email'] && step1Form.controls['email'].touched">Invalid email address</div>
+      <input type="password" formControlName="password" placeholder="Password" />
+      <div *ngIf="step1Form.controls['password'].errors?.['required'] && step1Form.controls['password'].touched">Password is required</div>
+      <div *ngIf="step1Form.controls['password'].errors?.['minlength'] && step1Form.controls['password'].touched">Password must be at least 6 characters</div>
+      <button type="button" (click)="goToNextStep()">Next</button>
+    </form>
+  
+    <!-- Step 2 -->
+    <form [formGroup]="step2Form" *ngIf="currentStep === 2">
+      <h1>Step 2: Provide your details</h1>
+      <input formControlName="username" placeholder="Username" />
+      <div *ngIf="step2Form.controls['username'].errors?.['required'] && step2Form.controls['username'].touched">Username is required</div>
+      <input formControlName="tmdbApiKey" placeholder="TMDB API Key" />
+      <div *ngIf="step2Form.controls['tmdbApiKey'].errors?.['required'] && step2Form.controls['tmdbApiKey'].touched">TMDB API Key is required</div>
+      <button type="button" (click)="goToNextStep()">Next</button>
+    </form>
+  
+    <!-- Step 3 -->
+    <form [formGroup]="step3Form" *ngIf="currentStep === 3">
+      <h1>Step 3: Choose your plan</h1>
+      <div class="plans">
+        <div class="plan" *ngFor="let plan of ['Standard with ads', 'Standard', 'Premium']">
+          <input type="radio" formControlName="plan" [value]="plan" />
+          <label>{{ plan }}</label>
+        </div>
+      </div>
+      <button type="button" (click)="submit()">Submit</button>
+    </form>
+  </div>
+  

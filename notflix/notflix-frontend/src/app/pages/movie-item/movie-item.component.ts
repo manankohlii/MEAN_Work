@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class MovieItemComponent {
   @Input() movie: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  navigateToDetail(movieId: number) {
-    this.router.navigate(['/movie-detail', movieId]);
+  goToDetails(movieId: number) {
+    this.router.navigate(['/movie',this.movie.id]);
   }
 }
