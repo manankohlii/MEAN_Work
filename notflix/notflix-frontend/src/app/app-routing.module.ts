@@ -8,15 +8,12 @@ import { RegisterComponent } from './pages/register/register.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  { path: 'login', component: LoginComponent },
-  { path: 'movies', component: MovieListComponent },
-  { path: 'movie/:id', component: MovieDetailComponent },
-  { path: 'register', component: RegisterComponent }
 
+  { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
+  { path: 'movie/:id', component: MovieDetailComponent },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
+  { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
+  { path: 'movies', loadChildren: () => import('./pages/movie-list/movie-list.module').then(m => m.MovieListModule) }
 ];
 
 @NgModule({
