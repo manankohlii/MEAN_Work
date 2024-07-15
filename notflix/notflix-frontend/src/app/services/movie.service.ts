@@ -14,22 +14,27 @@ interface Movie {
   providedIn: 'root'
 })
 export class MovieService {
-  private apiUrl = 'https://api.themoviedb.org/3/discover/movie';
+  private apiUrl = 'https://api.themoviedb.org/3';
   private apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMjY4NTkxNzhiNWZjZTJmMDFmYTE0MmM0NWYwYzE0ZiIsIm5iZiI6MTcyMDQ3MTY1OC4xOTQ3LCJzdWIiOiI2Njg0ZTE1OGE5YWU3Mjc2ZmE4MThmNzIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.yZTPKFSPENgfsLIUviXjdbbTnbMXfWtuk9YHVi_j66o";
 
   constructor(private http: HttpClient) {}
 
   getMovies(): Observable<Movie[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.apiKey}`);
-    return this.http.get<{ results: Movie[] }>(this.apiUrl, { headers }).pipe(
+    return this.http.get<{ results: Movie[] }>(`${this.apiUrl}/discover/movie`, { headers }).pipe(
       map(response => response.results)
     );
   }
+
   getMovieDetails(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`);
+    return this.http.get(`${this.apiUrl}/movie/${id}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.apiKey}`)
+    });
   }
 
   getMovieVideos(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/movie/${id}/videos?api_key=${this.apiKey}`);
+    return this.http.get(`${this.apiUrl}/movie/${id}/videos`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.apiKey}`)
+    });
   }
 }

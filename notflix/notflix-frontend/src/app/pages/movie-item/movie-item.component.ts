@@ -8,10 +8,15 @@ import { Router } from '@angular/router';
 })
 export class MovieItemComponent {
   @Input() movie: any;
+  loading: boolean = false;
 
   constructor(private router: Router) {}
 
   goToDetails(movieId: number) {
-    this.router.navigate(['/movie',this.movie.id]);
+    this.loading = true;
+    // Simulate a delay to show the spinner
+    setTimeout(() => {
+      this.router.navigate(['/movie', movieId]);
+    }, 1000); // Replace this with the actual data fetching delay
   }
 }

@@ -1,6 +1,7 @@
-<div class="movie-item" (click)="goToDetails(movie.id)">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
-    <h3>{{ movie.title }}</h3>
-    <p>{{ movie.overview }}</p>
-  </div>
-  
+<div class="movie-item">
+  <img *ngIf="!loading" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+  <div *ngIf="loading" class="spinner"></div>
+  <h3>{{ movie.title }}</h3>
+  <p>{{ movie.overview }}</p>
+  <button (click)="goToDetails(movie.id)">Movie Details</button>
+</div>

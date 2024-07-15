@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MovieItemComponent } from './pages/movie-item/movie-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { TrailerDialogComponent } from './pages/movie-detail/trailer-dialog/trailer-dialog.component';
@@ -16,7 +15,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [   
     AppComponent,
-    MovieItemComponent,
     MovieDetailComponent,
     TrailerDialogComponent
   ],
