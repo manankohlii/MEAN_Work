@@ -4,6 +4,7 @@ import { MovieListComponent } from './movie-list.component';
 import { RouterModule } from '@angular/router';
 import { MovieItemComponent } from '../movie-item/movie-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     SharedModule,
+    InfiniteScrollModule,
     CommonModule,
     RouterModule.forChild([
       { path: '', component: MovieListComponent }

@@ -10,6 +10,7 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
 import { TrailerDialogComponent } from './pages/movie-detail/trailer-dialog/trailer-dialog.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MatDialogModule } from '@angular/material/dialog';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     HttpClientModule,
     YouTubePlayerModule,
-    MatDialogModule
+    MatDialogModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

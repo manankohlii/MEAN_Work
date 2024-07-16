@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
-
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string;
-}
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -14,13 +7,23 @@ interface Movie {
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  movies: Movie[] = [];
+  movies: any[] = [];
+  page: number = 1;
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe(data => {
-      this.movies = data;
+    this.loadMovies();
+  }
+
+  loadMovies(): void {
+    this.movieService.getMovies(this.page).subscribe((data: any[]) => {
+      this.movies = [...this.movies, ...data];
     });
+  }
+
+  onScroll(): void {
+    this.page++;
+    this.loadMovies();
   }
 }

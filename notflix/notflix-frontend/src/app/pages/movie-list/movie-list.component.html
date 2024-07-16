@@ -1,7 +1,6 @@
 <div class="movie-list">
-    <app-navbar></app-navbar>
-    <div class="movies">
-      <app-movie-item *ngFor="let movie of movies" [movie]="movie"></app-movie-item>
-    </div>
+  <app-navbar></app-navbar>
+  <div class="movies" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <app-movie-item *ngFor="let movie of movies" [movie]="movie"></app-movie-item>
   </div>
-  
+</div>
