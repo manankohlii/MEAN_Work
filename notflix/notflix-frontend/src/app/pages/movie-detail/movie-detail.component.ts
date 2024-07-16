@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { MatDialog } from '@angular/material/dialog';
-import { TrailerDialogComponent } from './trailer-dialog/trailer-dialog.component';
+import { TrailerDialogComponent } from '../movie-detail/trailer-dialog/trailer-dialog.component';
 
 @Component({
   selector: 'app-movie-detail',
@@ -11,7 +11,8 @@ import { TrailerDialogComponent } from './trailer-dialog/trailer-dialog.componen
 })
 export class MovieDetailComponent implements OnInit {
   movie: any;
-  trailerKey: string | null = null;
+  trailers: any[] = [];
+  trailerIndex: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,16 +29,19 @@ export class MovieDetailComponent implements OnInit {
       });
   
       this.movieService.getMovieVideos(id).subscribe(data => {
-        const trailer = data.results.find((video: any) => video.type === 'Trailer');
-        this.trailerKey = trailer ? trailer.key : null;
+        this.trailers = data.results.filter((video: any) => video.site === 'YouTube');
       });
     }
   }
   
-
   openTrailer(): void {
-    this.dialog.open(TrailerDialogComponent, {
-      data: { trailerKey: this.trailerKey }
-    });
+    if (this.trailers.length > 0) {
+      this.dialog.open(TrailerDialogComponent, {
+        data: {
+          trailers: this.trailers,
+          currentTrailerIndex: this.trailerIndex
+        }
+      });
+    }
   }
 }

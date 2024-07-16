@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-trailer-dialog',
@@ -7,5 +7,34 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./trailer-dialog.component.scss']
 })
 export class TrailerDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { trailerKey: string }) {}
+  trailers: any[];
+  currentTrailerIndex: number;
+
+  constructor(
+    public dialogRef: MatDialogRef<TrailerDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.trailers = data.trailers;
+    this.currentTrailerIndex = data.currentTrailerIndex;
+  }
+
+  get currentTrailerKey(): string {
+    return this.trailers[this.currentTrailerIndex].key;
+  }
+
+  prevTrailer(): void {
+    if (this.currentTrailerIndex > 0) {
+      this.currentTrailerIndex--;
+    }
+  }
+
+  nextTrailer(): void {
+    if (this.currentTrailerIndex < this.trailers.length - 1) {
+      this.currentTrailerIndex++;
+    }
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 }

@@ -1,4 +1,8 @@
-<h1 mat-dialog-title>Trailer</h1>
-<div mat-dialog-content>
-  <youtube-player [videoId]="data.trailerKey"></youtube-player>
+<div class="trailer-dialog">
+  <button (click)="prevTrailer()" [disabled]="currentTrailerIndex === 0">Previous</button>
+  <button (click)="nextTrailer()" [disabled]="currentTrailerIndex === trailers.length - 1">Next</button>
+  <button (click)="closeDialog()">Close</button>
+  <div class="trailer-container">
+    <iframe width="560" height="315" [src]="'https://www.youtube.com/embed/' + currentTrailerKey" frameborder="0" allowfullscreen></iframe>
+  </div>
 </div>
