@@ -1,36 +1,49 @@
-<div class="registration-container">
-    <!-- Step 1 -->
-    <form [formGroup]="step1Form" *ngIf="currentStep === 1">
-      <h1>Step 1: Create your account</h1>
-      <input formControlName="email" placeholder="Email address" />
-      <div *ngIf="step1Form.controls['email'].errors?.['required'] && step1Form.controls['email'].touched">Email is required</div>
-      <div *ngIf="step1Form.controls['email'].errors?.['email'] && step1Form.controls['email'].touched">Invalid email address</div>
-      <input type="password" formControlName="password" placeholder="Password" />
-      <div *ngIf="step1Form.controls['password'].errors?.['required'] && step1Form.controls['password'].touched">Password is required</div>
-      <div *ngIf="step1Form.controls['password'].errors?.['minlength'] && step1Form.controls['password'].touched">Password must be at least 6 characters</div>
-      <button type="button" (click)="goToNextStep()">Next</button>
-    </form>
-  
-    <!-- Step 2 -->
-    <form [formGroup]="step2Form" *ngIf="currentStep === 2">
-      <h1>Step 2: Provide your details</h1>
-      <input formControlName="username" placeholder="Username" />
-      <div *ngIf="step2Form.controls['username'].errors?.['required'] && step2Form.controls['username'].touched">Username is required</div>
-      <input formControlName="tmdbApiKey" placeholder="TMDB API Key" />
-      <div *ngIf="step2Form.controls['tmdbApiKey'].errors?.['required'] && step2Form.controls['tmdbApiKey'].touched">TMDB API Key is required</div>
-      <button type="button" (click)="goToNextStep()">Next</button>
-    </form>
-  
-    <!-- Step 3 -->
-    <form [formGroup]="step3Form" *ngIf="currentStep === 3">
-      <h1>Step 3: Choose your plan</h1>
-      <div class="plans">
-        <div class="plan" *ngFor="let plan of ['Standard with ads', 'Standard', 'Premium']">
-          <input type="radio" formControlName="plan" [value]="plan" />
-          <label>{{ plan }}</label>
+<div class="register-container">
+    <form [formGroup]="step1Form" *ngIf="currentStep === 1" (ngSubmit)="goToNextStep()">
+      <h1>Register - Step 1</h1>
+      <div class="form-group">
+        <input type="email" formControlName="email" placeholder="Email" required>
+        <div *ngIf="submitted && step1Form.controls['email'].errors" class="error">
+          <span *ngIf="step1Form.controls['email'].errors['required']">Email is required</span>
+          <span *ngIf="step1Form.controls['email'].errors['email']">Invalid email format</span>
+          <span *ngIf="step1Form.controls['email'].errors['emailExists']">Email already exists</span>
         </div>
       </div>
-      <button type="button" (click)="submit()">Submit</button>
+      <div class="form-group">
+        <input type="password" formControlName="password" placeholder="Password" required>
+        <div *ngIf="submitted && step1Form.controls['password'].errors" class="error">
+          <span *ngIf="step1Form.controls['password'].errors['required']">Password is required</span>
+          <span *ngIf="step1Form.controls['password'].errors['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Next</button>
     </form>
-  </div>
   
+    <form [formGroup]="step2Form" *ngIf="currentStep === 2" (ngSubmit)="goToNextStep()">
+      <h1>Register - Step 2</h1>
+      <div class="form-group">
+        <input type="text" formControlName="username" placeholder="Username" required>
+        <div *ngIf="submitted && step2Form.controls['username'].errors" class="error">
+          <span *ngIf="step2Form.controls['username'].errors['required']">Username is required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="tmdbApiKey" placeholder="TMDB API Key" required>
+        <div *ngIf="submitted && step2Form.controls['tmdbApiKey'].errors" class="error">
+          <span *ngIf="step2Form.controls['tmdbApiKey'].errors['required']">TMDB API Key is required</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+  
+    <form [formGroup]="step3Form" *ngIf="currentStep === 3" (ngSubmit)="submit()">
+      <h1>Register - Step 3</h1>
+      <div class="form-group">
+        <input type="text" formControlName="plan" placeholder="Plan" required>
+        <div *ngIf="submitted && step3Form.controls['plan'].errors" class="error">
+          <span *ngIf="step3Form.controls['plan'].errors['required']">Plan is required</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>  
