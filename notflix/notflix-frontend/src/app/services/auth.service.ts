@@ -24,4 +24,9 @@ export class AuthService {
     const body = { email, password, username, tmdb_key: tmdbKey, role };
     return this.http.post(`${this.baseUrl}/signup`, body);
   }
+
+  checkEmail(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/check-email`, { email });
+  }
+
 }
