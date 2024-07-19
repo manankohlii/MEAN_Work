@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +11,12 @@ import { TrailerDialogComponent } from './pages/movie-detail/trailer-dialog/trai
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AuthService } from './services/auth.service';
+import { ScrollService } from './services/scroll.service';
 
+export function initApp(authService: AuthService) {
+  return () => authService.isLoggedIn$.subscribe();
+}
 
 @NgModule({
   declarations: [   
@@ -30,7 +35,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatDialogModule,
     InfiniteScrollModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    { provide: APP_INITIALIZER, useFactory: initApp, deps: [AuthService], multi: true },
+    ScrollService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,33 +1,40 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #141414;
-    height: 60px; 
-  }
-  
-  .navbar-logo img {
-    height: 30px;
-    padding: 10px;
-  }
-  
-  .navbar-signin {
-    margin-left: auto;
-  }
-  
-  .navbar-signin .btn-signin {
-    color: white;
-    text-decoration: none;
-    background-color: #e50914; 
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-    margin-left: 1100px;
-  }
-  
-  .navbar-signin .btn-signin:hover {
-    background-color: #f40612;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #141414;
+  height: 60px;
+}
+
+.navbar-logo img {
+  height: 30px;
+  padding: 10px;
+}
+
+.navbar-signin {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-signin .user-email {
+  color: white;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.navbar-signin .btn-signin,
+.navbar-signin .btn-signout {
+  color: white;
+  text-decoration: none;
+  background-color: #e50914;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+.navbar-signin .btn-signin:hover,
+.navbar-signin .btn-signout:hover {
+  background-color: #f40612;
+}
