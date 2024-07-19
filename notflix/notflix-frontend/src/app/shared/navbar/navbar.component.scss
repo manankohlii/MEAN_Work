@@ -15,14 +15,19 @@
 .navbar-signin {
   display: flex;
   align-items: center;
-  gap: 15px;
+}
+
+.navbar-signin .user-email {
+  color: white;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
 .navbar-signin .btn-signin,
 .navbar-signin .btn-signout {
   color: white;
   text-decoration: none;
-  background-color: #e50914; 
+  background-color: #e50914;
   border: none;
   padding: 10px 20px;
   border-radius: 3px;
@@ -32,10 +37,4 @@
 .navbar-signin .btn-signin:hover,
 .navbar-signin .btn-signout:hover {
   background-color: #f40612;
-}
-
-.user-email {
-  color: white;
-  font-size: 14px;
-  margin-right: 10px;
 }

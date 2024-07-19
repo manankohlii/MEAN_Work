@@ -12,6 +12,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AuthService } from './services/auth.service';
+import { ScrollService } from './services/scroll.service';
 
 export function initApp(authService: AuthService) {
   return () => authService.isLoggedIn$.subscribe();
@@ -36,7 +37,8 @@ export function initApp(authService: AuthService) {
   ],
   providers: [
     AuthService,
-    { provide: APP_INITIALIZER, useFactory: initApp, deps: [AuthService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: initApp, deps: [AuthService], multi: true },
+    ScrollService
   ],
   bootstrap: [AppComponent]
 })
