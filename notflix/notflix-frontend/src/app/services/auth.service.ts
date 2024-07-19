@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +9,41 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   private baseUrl = 'http://localhost:5566/api/v1/auth';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  signIn(email: string, password: string): Observable<any> {
-    return this.http.post<{ accessToken: string, role: string }>(`${this.baseUrl}/signin`, { email, password })
-      .pipe(map(response => {
-        localStorage.setItem('accessToken', response.accessToken);
-        localStorage.setItem('role', response.role);
-        return response;
-      }));
-  }
-
-  signUp(email: string, password: string, username: string, tmdbKey: string, role: string): Observable<any> {
-    const body = { email, password, username, tmdb_key: tmdbKey, role };
-    return this.http.post(`${this.baseUrl}/signup`, body);
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/signin`, { email, password }).pipe(
+      tap(response => {
+        if (response && response.accessToken) {
+          localStorage.setItem('accessToken', response.accessToken);
+          localStorage.setItem('role', response.role);
+        }
+      }),
+      catchError(error => {
+        console.error('Login error', error);
+        return of(null);
+      })
+    );
   }
 
   checkEmail(email: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/check-email`, { email });
+    return this.http.post<any>(`${this.baseUrl}/check-email`, { email });
   }
 
+  signUp(email: string, password: string, username: string, tmdbKey: string, role: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/signup`, { email, password, username, tmdbKey, role });
+  }
+
+  logout() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('role');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('accessToken');
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role');
+  }
 }

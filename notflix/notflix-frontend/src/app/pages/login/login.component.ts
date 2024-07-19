@@ -33,17 +33,16 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const { email, password } = this.loginForm.value;
-    this.authService.signIn(email, password).subscribe(
-      (response) => {
-        this.router.navigate(['/movies']);
-      },
-      (error) => {
-        if (error.status === 401) {
-          this.errorMessage = 'Invalid email or password. Please try again.';
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      response => {
+        if (response) {
+          this.router.navigate(['/movies']);
         } else {
-          console.error('Error signing in:', error);
+          this.errorMessage = 'Invalid credentials. Please try again.';
         }
+      },
+      error => {
+        this.errorMessage = 'An error occurred. Please try again.';
       }
     );
   }
