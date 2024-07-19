@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private baseUrl = 'http://localhost:5566/api/v1/auth';
+  private loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn());
 
-  constructor(private http: HttpClient) {}
+  isLoggedIn$ = this.loggedIn.asObservable();
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/signin`, { email, password }).pipe(
@@ -17,6 +21,8 @@ export class AuthService {
         if (response && response.accessToken) {
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('role', response.role);
+          localStorage.setItem('userEmail', email);
+          this.loggedIn.next(true);
         }
       }),
       catchError(error => {
@@ -37,6 +43,9 @@ export class AuthService {
   logout() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('role');
+    localStorage.removeItem('userEmail');
+    this.loggedIn.next(false);
+    this.router.navigate(['/']);
   }
 
   isLoggedIn(): boolean {
@@ -45,5 +54,9 @@ export class AuthService {
 
   getRole(): string | null {
     return localStorage.getItem('role');
+  }
+
+  getUserEmail(): string | null {
+    return localStorage.getItem('userEmail');
   }
 }

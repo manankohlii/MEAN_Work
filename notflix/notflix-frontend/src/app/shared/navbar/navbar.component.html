@@ -1,11 +1,12 @@
 <nav class="navbar">
-    <div class="container">
-      <a href="/" class="navbar-logo">
-        <img src="assets/netflix_logo.svg" alt="Notflix Logo">
-      </a>
-      <div class="navbar-signin">
-        <a href="/login" class="btn btn-signin">Sign In</a>
-      </div>
+  <div class="container">
+    <a href="/" class="navbar-logo">
+      <img src="assets/netflix_logo.svg" alt="Notflix Logo">
+    </a>
+    <div class="navbar-signin">
+      <span *ngIf="isLoggedIn" class="user-email">{{ userEmail }}</span>
+      <a *ngIf="!isLoggedIn" href="/login" class="btn btn-signin">Sign In</a>
+      <button *ngIf="isLoggedIn" (click)="signOut()" class="btn btn-signout">Sign Out</button>
     </div>
-  </nav>
-  
+  </div>
+</nav>
