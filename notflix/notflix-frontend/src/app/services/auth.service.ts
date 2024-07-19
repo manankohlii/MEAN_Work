@@ -19,4 +19,9 @@ export class AuthService {
         return response;
       }));
   }
+
+  signUp(email: string, password: string, username: string, tmdbKey: string, role: string): Observable<any> {
+    const body = { email, password, username, tmdb_key: tmdbKey, role };
+    return this.http.post(`${this.baseUrl}/signup`, body);
+  }
 }

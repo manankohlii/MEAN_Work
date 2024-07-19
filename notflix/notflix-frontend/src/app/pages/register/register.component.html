@@ -25,12 +25,16 @@
     <form [formGroup]="step3Form" *ngIf="currentStep === 3">
       <h1>Step 3: Choose your plan</h1>
       <div class="plans">
-        <div class="plan" *ngFor="let plan of ['Standard with ads', 'Standard', 'Premium']">
+        <div class="plan" *ngFor="let plan of ['USER', 'SUPERUSER', 'ADMIN']">
           <input type="radio" formControlName="plan" [value]="plan" />
           <label>{{ plan }}</label>
         </div>
       </div>
       <button type="button" (click)="submit()">Submit</button>
     </form>
+  
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
   </div>
   
