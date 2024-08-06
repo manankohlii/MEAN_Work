@@ -1,0 +1,18 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Username</th>
+                <th>Profile URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let result of results">
+                <td>{{result.id}}</td>
+                <td>{{result.login}}</td>
+                <td>{{result.url}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

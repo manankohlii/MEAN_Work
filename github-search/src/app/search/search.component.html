@@ -1,0 +1,9 @@
+<div>
+    <input [(ngModel)]="username" placeholder="Enter GitHub username" />
+    <button (click)="onSearch()">Search</button>
+    <p style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+  <div>
+    <input [(ngModel)]="filterText" (input)="onFilterChange()" placeholder="Filter results" />
+  </div>
+  
