@@ -1,0 +1,9 @@
+<h2>Rating List</h2>
+<div class="ratings-container">
+  <app-rating
+    *ngFor="let rating of ratings"
+    [name]="rating.name"
+    [content]="rating.content"
+    [rate]="rating.rate"
+  ></app-rating>
+</div>

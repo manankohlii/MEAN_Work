@@ -1,0 +1,9 @@
+<div class="rating">
+    <div class="stars">
+      <span *ngFor="let _ of getRange(filledStars)">&#9733;</span>
+      <span *ngFor="let _ of getRange(emptyStars)">&#9734;</span>
+    </div>
+    <h3>{{ name }}</h3>
+    <p>{{ content }}</p>
+  </div>
+  
