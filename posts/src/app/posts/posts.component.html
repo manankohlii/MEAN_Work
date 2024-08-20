@@ -1,0 +1,13 @@
+<h1>List of Posts</h1>
+<div *ngFor="let post of posts">
+    <h3 (click)="toggleComments(post.id)">
+      {{ post.id }} - {{ post.title }}
+    </h3>
+    <div *ngIf="showComments[post.id]">
+      <ul>
+        <li *ngFor="let comment of comments[post.id]">
+          <strong>{{ comment.name }}</strong>: {{ comment.body }}
+        </li>
+      </ul>
+    </div>
+  </div>
