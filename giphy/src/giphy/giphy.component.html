@@ -1,0 +1,8 @@
+<div>
+    <h1>Giphy API Response</h1>
+
+    <button (click)="fetchGifs()">Fetch GIFs</button>
+
+    <pre *ngIf="giphyResponse">{{ giphyResponse | json }}</pre>
+  </div>
+  
